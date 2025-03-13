@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuke Tulole - Painel de Administração</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/images/logo.png" alt="Tuke Tulole Logo" class="logo">
+                <h2>Tuke Tulole</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Usuários</a></li>
+                <li><a href="#"><i class="fas fa-user-shield"></i> Permissões</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Produtos</a></li>
+                <li><a href="#"><i class="fas fa-file-invoice"></i> Faturas</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="moz-identity">
+                    <img src="assets/images/mozambique-flag.png" alt="Bandeira de Moçambique" class="moz-flag">
+                    <span>Moçambique</span>
+                </div>
+                <p>Tuke Tulole Demo 1.0</p>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-navbar">
+                <div class="toggle-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Pesquisar...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-menu">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="messages">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="assets/images/user-avatar.png" alt="User Avatar">
+                        <div class="user-info">
+                            <h4>AUGUSTO DOMINGOS LUÍS</h4>
+                            <p>ADMINISTRADOR</p>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Dashboard</h1>
+                    <div class="date-time">
+                        <span id="current-date"></span>
+                    </div>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="statistics">
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <div class="stat-card-info">
+                                <h3>Total de Utilizadores</h3>
+                                <h2>1,254</h2>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-footer">
+                            <span class="growth positive"><i class="fas fa-arrow-up"></i> 12% este mês</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <div class="stat-card-info">
+                                <h3>Receita Total</h3>
+                                <h2>350,000 MZN</h2>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-footer">
+                            <span class="growth positive"><i class="fas fa-arrow-up"></i> 8% este mês</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <div class="stat-card-info">
+                                <h3>Novos Clientes</h3>
+                                <h2>87</h2>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-footer">
+                            <span class="growth negative"><i class="fas fa-arrow-down"></i> 3% este mês</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-content">
+                            <div class="stat-card-info">
+                                <h3>Pedidos Pendentes</h3>
+                                <h2>35</h2>
+                            </div>
+                            <div class="stat-card-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card-footer">
+                            <span class="status-normal">Sem alterações</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Vendas por Província</h3>
+                            <div class="chart-actions">
+                                <select id="sales-period">
+                                    <option value="weekly">Semanais</option>
+                                    <option value="monthly" selected>Mensais</option>
+                                    <option value="yearly">Anuais</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="sales-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Usuários por Localização</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">Maputo</button>
+                                <button class="chart-btn">Beira</button>
+                                <button class="chart-btn">Nampula</button>
+                                <button class="chart-btn">Outras</button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="users-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="recent-activities">
+                    <div class="section-header">
+                        <h2>Atividades Recentes</h2>
+                        <a href="#" class="view-all">Ver Tudo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="activities-list">
+                        <div class="activity-item">
+                            <div class="activity-icon bg-primary">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Novo Utilizador Registado</h4>
+                                <p>Joaquim Chissano registou-se como novo utilizador no sistema.</p>
+                                <span class="activity-time">Há 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon bg-success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Pagamento Recebido</h4>
+                                <p>Pagamento de 15,000 MZN recebido da Loja Pemba.</p>
+                                <span class="activity-time">Há 5 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon bg-warning">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Permissão Atualizada</h4>
+                                <p>Samora Machel foi promovido para Administrador Regional.</p>
+                                <span class="activity-time">Há 1 dia</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon bg-danger">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4>Alerta de Sistema</h4>
+                                <p>Detectado tentativa de acesso não autorizado em Inhambane.</p>
+                                <span class="activity-time">Há 2 dias</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management -->
+                <div class="user-management">
+                    <div class="section-header">
+                        <h2>Gestão de Usuários</h2>
+                        <div class="section-actions">
+                            <button class="btn-add"><i class="fas fa-plus"></i> Adicionar Usuário</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Função</th>
+                                    <th>Status</th>
+                                    <th>Localização</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="assets/images/user1.png" alt="User">
+                                            <div class="user-info-text">
+                                                <h4>Filipe Nyusi</h4>
+                                                <p>ID: 001234</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>filipe.nyusi@example.com</td>
+                                    <td>Admin</td>
+                                    <td><span class="status-badge active">Ativo</span></td>
+                                    <td>Maputo</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="assets/images/user2.png" alt="User">
+                                            <div class="user-info-text">
+                                                <h4>Luísa Diogo</h4>
+                                                <p>ID: 001235</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>luisa.diogo@example.com</td>
+                                    <td>Gerente</td>
+                                    <td><span class="status-badge active">Ativo</span></td>
+                                    <td>Beira</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="assets/images/user3.png" alt="User">
+                                            <div class="user-info-text">
+                                                <h4>Alberto Chipande</h4>
+                                                <p>ID: 001236</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>alberto.chipande@example.com</td>
+                                    <td>Usuário</td>
+                                    <td><span class="status-badge inactive">Inativo</span></td>
+                                    <td>Nampula</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-info-cell">
+                                            <img src="assets/images/user4.png" alt="User">
+                                            <div class="user-info-text">
+                                                <h4>Graça Machel</h4>
+                                                <p>ID: 001237</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>graca.machel@example.com</td>
+                                    <td>Gerente</td>
+                                    <td><span class="status-badge active">Ativo</span></td>
+                                    <td>Maputo</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/charts.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
