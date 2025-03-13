@@ -1,234 +1,148 @@
-// Espera o DOM ser carregado completamente
+// charts.js - Implementação otimizada do gráfico de atividades
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializa o gráfico de vendas por província
-    initSalesChart();
-    
-    // Inicializa o gráfico de usuários por localização
-    initUsersChart();
-    
-    // Adiciona event listener para o seletor de período
-    document.getElementById('sales-period').addEventListener('change', function() {
-        updateSalesChart(this.value);
-    });
-    
-    // Adiciona event listeners para os botões de localização
-    const locationButtons = document.querySelectorAll('.chart-btn');
-    locationButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove a classe 'active' de todos os botões
-            locationButtons.forEach(btn => btn.classList.remove('active'));
-            // Adiciona a classe 'active' ao botão clicado
-            this.classList.add('active');
-            // Atualiza o gráfico com a localização selecionada
-            updateUsersChart(this.textContent);
-        });
-    });
+    // Verifica se o elemento canvas existe na página
+    const activityChartCanvas = document.getElementById('activityChart');
+    if (activityChartCanvas) {
+        // Define uma altura máxima para o gráfico
+        activityChartCanvas.style.maxHeight = '300px';
+        initActivityChart(activityChartCanvas);
+    }
 });
 
-// Função para inicializar o gráfico de vendas
-function initSalesChart() {
-    const ctx = document.getElementById('sales-chart').getContext('2d');
-    
-    // Dados de exemplo - substitua pelos seus dados reais
-    const monthlyData = {
+/**
+ * Inicializa o gráfico de resumo de atividades
+ * @param {HTMLCanvasElement} canvas - O elemento canvas para renderizar o gráfico
+ */
+function initActivityChart(canvas) {
+    // Dados de exemplo para o gráfico de atividades
+    const data = {
         labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-        datasets: [{
-            label: 'Vendas por Província',
-            data: [12000, 19000, 15000, 17000, 22000, 24000],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }]
+        datasets: [
+            {
+                label: 'Tarefas Concluídas',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1, // Reduzido para melhor performance
+                data: [65, 59, 80, 81, 56, 55],
+                tension: 0.3 // Suavização reduzida
+            },
+            {
+                label: 'Tarefas Pendentes',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                borderWidth: 1, // Reduzido para melhor performance
+                data: [28, 48, 40, 19, 32, 27],
+                tension: 0.3 // Suavização reduzida
+            }
+        ]
     };
-    
-    window.salesChart = new Chart(ctx, {
-        type: 'bar',
-        data: monthlyData,
+
+    // Configurações do gráfico otimizadas
+    const config = {
+        type: 'line',
+        data: data,
         options: {
             responsive: true,
+            maintainAspectRatio: true, // Alterado para true para evitar o tremor
+            aspectRatio: 2, // Define uma proporção fixa
+            animation: {
+                duration: 0 // Desativa animações para melhor performance
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Atividades por Mês',
+                    font: {
+                        size: 14 // Tamanho reduzido
+                    },
+                    padding: {
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 12, // Tamanho reduzido das caixas da legenda
+                        padding: 10 // Espaçamento reduzido
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    enabled: true,
+                    callbacks: {
+                        // Simplifica os tooltips
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.raw;
+                        }
+                    }
+                }
+            },
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Tarefas',
+                        font: {
+                            size: 12
+                        }
+                    },
+                    ticks: {
+                        maxTicksLimit: 5 // Limita o número de marcações no eixo Y
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Mês',
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            elements: {
+                point: {
+                    radius: 3, // Pontos menores
+                    hoverRadius: 4 // Hover menor
+                },
+                line: {
+                    borderWidth: 1 // Linhas mais finas
                 }
             }
         }
-    });
-}
-
-// Função para atualizar o gráfico de vendas com base no período selecionado
-function updateSalesChart(period) {
-    // Dados de exemplo para diferentes períodos - substitua pelos seus dados reais
-    let chartData;
-    
-    switch(period) {
-        case 'weekly':
-            chartData = {
-                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
-                datasets: [{
-                    label: 'Vendas Semanais',
-                    data: [1200, 1900, 1500, 1700, 2200, 2400, 1800],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                }]
-            };
-            break;
-        case 'monthly':
-            chartData = {
-                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-                datasets: [{
-                    label: 'Vendas Mensais',
-                    data: [12000, 19000, 15000, 17000, 22000, 24000],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            };
-            break;
-        case 'yearly':
-            chartData = {
-                labels: ['2020', '2021', '2022', '2023', '2024'],
-                datasets: [{
-                    label: 'Vendas Anuais',
-                    data: [120000, 150000, 180000, 210000, 250000],
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }]
-            };
-            break;
-    }
-    
-    window.salesChart.data = chartData;
-    window.salesChart.update();
-}
-
-// Função para inicializar o gráfico de usuários
-function initUsersChart() {
-    const ctx = document.getElementById('users-chart').getContext('2d');
-    
-    // Dados de exemplo - substitua pelos seus dados reais
-    const userData = {
-        labels: ['Desktop', 'Mobile', 'Tablet'],
-        datasets: [{
-            label: 'Usuários em Maputo',
-            data: [3000, 5000, 800],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)'
-            ],
-            borderWidth: 1
-        }]
     };
+
+    // Cria o gráfico com configurações otimizadas
+    const chart = new Chart(canvas, config);
     
-    window.usersChart = new Chart(ctx, {
-        type: 'pie',
-        data: userData,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
+    // Desativa a reação automática ao redimensionamento da janela
+    // e implementa uma versão com throttle para evitar tremores
+    window.addEventListener('resize', debounce(function() {
+        chart.resize();
+    }, 150));
 }
 
-// Função para atualizar o gráfico de usuários com base na localização selecionada
-function updateUsersChart(location) {
-    // Dados de exemplo para diferentes localizações - substitua pelos seus dados reais
-    let chartData;
-    
-    switch(location) {
-        case 'Maputo':
-            chartData = {
-                labels: ['Desktop', 'Mobile', 'Tablet'],
-                datasets: [{
-                    label: 'Usuários em Maputo',
-                    data: [3000, 5000, 800],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
-            break;
-        case 'Beira':
-            chartData = {
-                labels: ['Desktop', 'Mobile', 'Tablet'],
-                datasets: [{
-                    label: 'Usuários na Beira',
-                    data: [2200, 4500, 600],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
-            break;
-        case 'Nampula':
-            chartData = {
-                labels: ['Desktop', 'Mobile', 'Tablet'],
-                datasets: [{
-                    label: 'Usuários em Nampula',
-                    data: [1800, 3900, 500],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
-            break;
-        case 'Outras':
-            chartData = {
-                labels: ['Desktop', 'Mobile', 'Tablet'],
-                datasets: [{
-                    label: 'Usuários em Outras Localidades',
-                    data: [1500, 4200, 400],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
-            break;
-    }
-    
-    window.usersChart.data = chartData;
-    window.usersChart.update();
+/**
+ * Função auxiliar para limitar a frequência das chamadas de redimensionamento
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            func.apply(context, args);
+        }, wait);
+    };
 }
+
+/**
+ * Exporta as funções para uso em outros scripts
+ */
+window.chartFunctions = {
+    initActivityChart: initActivityChart
+};

@@ -3,338 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuke Tulole - Painel de Administração</title>
+    <title>Perfil do Usuário | Tuke Tulole Demo V.2 </title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <img src="assets/images/logo.png" alt="Tuke Tulole Logo" class="logo">
-                <h2>Tuke Tulole</h2>
-            </div>
-            <ul class="sidebar-menu">
-                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Usuários</a></li>
-                <li><a href="#"><i class="fas fa-user-shield"></i> Permissões</a></li>
-                <li><a href="#"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
-                <li><a href="#"><i class="fas fa-box"></i> Produtos</a></li>
-                <li><a href="#"><i class="fas fa-file-invoice"></i> Faturas</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
-            </ul>
-            <div class="sidebar-footer">
-                <div class="moz-identity">
-                    <img src="assets/images/mozambique-flag.png" alt="Bandeira de Moçambique" class="moz-flag">
-                    <span>Moçambique</span>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Tuke Tulole Logo">
+                    <h1>Tuke Tulole Demo V.2</h1>
                 </div>
-                <p>Tuke Tulole Demo 1.0</p>
-            </div>
-        </nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Serviços</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#" class="btn">Entrar</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Top Navbar -->
-            <header class="top-navbar">
-                <div class="toggle-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Pesquisar...">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="user-menu">
-                    <div class="notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Profile Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-picture">
+                        <img src="assets/images/user-avatar.png" alt="User">
                     </div>
-                    <div class="messages">
-                        <i class="fas fa-envelope"></i>
-                        <span class="badge">5</span>
+                    <div class="profile-info">
+                        <h3>Augusto Domingos Luís</h3>
+                        <p>Agricultor</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Cabo Delgado, Moçambique</p>
                     </div>
-                    <div class="user-profile">
-                        <img src="assets/images/user-avatar.png" alt="User Avatar">
-                        <div class="user-info">
-                            <h4>AUGUSTO DOMINGOS LUÍS</h4>
-                            <p>ADMINISTRADOR</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Fazendas</div>
                         </div>
-                        <i class="fas fa-chevron-down"></i>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Culturas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">86%</div>
+                            <div class="stat-label">Produtividade</div>
+                        </div>
                     </div>
-                </div>
-            </header>
-
-            <!-- Dashboard Content -->
-            <div class="dashboard-content">
-                <div class="dashboard-header">
-                    <h1>Dashboard</h1>
-                    <div class="date-time">
-                        <span id="current-date"></span>
-                    </div>
+                    <ul class="profile-menu">
+                        <li><a href="#" class="active" data-tab="personal"><i class="fas fa-user"></i> Informação Pessoal</a></li>
+                        <li><a href="#" data-tab="farms"><i class="fas fa-tractor"></i> Minhas Fazendas</a></li>
+                        <li><a href="#" data-tab="activity"><i class="fas fa-chart-line"></i> Atividade</a></li>
+                        <li><a href="#" data-tab="settings"><i class="fas fa-cog"></i> Configurações</a></li>
+                        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                    </ul>
                 </div>
 
-                <!-- Statistics Cards -->
-                <div class="statistics">
-                    <div class="stat-card">
-                        <div class="stat-card-content">
-                            <div class="stat-card-info">
-                                <h3>Total de Utilizadores</h3>
-                                <h2>1,254</h2>
+                <!-- Profile Main Content -->
+                <div class="profile-main">
+                    <!-- Personal Info Tab -->
+                    <div class="tab-content active" id="personal">
+                        <h2 class="section-title">Informação Pessoal</h2>
+                        <div class="personal-info">
+                            <div class="info-group">
+                                <div class="info-label">Nome Completo:</div>
+                                <div class="info-value">Augusto Domingos Luís</div>
                             </div>
-                            <div class="stat-card-icon">
-                                <i class="fas fa-users"></i>
+                            <div class="info-group">
+                                <div class="info-label">Email:</div>
+                                <div class="info-value">aluis.mz@yahoo.com</div>
                             </div>
+                            <div class="info-group">
+                                <div class="info-label">Telefone:</div>
+                                <div class="info-value">+258 84 4324296</div>
+                            </div>
+                            <div class="info-group">
+                                <div class="info-label">Endereço:</div>
+                                <div class="info-value">Av. Eduardo Mondlane, Mueda</div>
+                            </div>
+                            <div class="info-group">
+                                <div class="info-label">Data de Nascimento:</div>
+                                <div class="info-value">15/03/1985</div>
+                            </div>
+                            <div class="info-group">
+                                <div class="info-label">Experiência:</div>
+                                <div class="info-value">10 anos</div>
+                            </div>
+                            <button class="edit-btn">Editar Informação</button>
                         </div>
-                        <div class="stat-card-footer">
-                            <span class="growth positive"><i class="fas fa-arrow-up"></i> 12% este mês</span>
-                        </div>
+                        
+                        <h2 class="section-title">Resumo de Atividades</h2>
+                        <canvas id="activityChart" width="400" height="200"></canvas>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-card-content">
-                            <div class="stat-card-info">
-                                <h3>Receita Total</h3>
-                                <h2>350,000 MZN</h2>
-                            </div>
-                            <div class="stat-card-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-footer">
-                            <span class="growth positive"><i class="fas fa-arrow-up"></i> 8% este mês</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-card-content">
-                            <div class="stat-card-info">
-                                <h3>Novos Clientes</h3>
-                                <h2>87</h2>
-                            </div>
-                            <div class="stat-card-icon">
-                                <i class="fas fa-user-plus"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-footer">
-                            <span class="growth negative"><i class="fas fa-arrow-down"></i> 3% este mês</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-card-content">
-                            <div class="stat-card-info">
-                                <h3>Pedidos Pendentes</h3>
-                                <h2>35</h2>
-                            </div>
-                            <div class="stat-card-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                        </div>
-                        <div class="stat-card-footer">
-                            <span class="status-normal">Sem alterações</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Charts Section -->
-                <div class="charts-container">
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Vendas por Província</h3>
-                            <div class="chart-actions">
-                                <select id="sales-period">
-                                    <option value="weekly">Semanais</option>
-                                    <option value="monthly" selected>Mensais</option>
-                                    <option value="yearly">Anuais</option>
-                                </select>
+                    <!-- Farms Tab -->
+                    <div class="tab-content" id="farms">
+                        <h2 class="section-title">Minhas Fazendas</h2>
+                        <div class="farm-card">
+                            <div class="farm-header">
+                                <div class="farm-name">Fazenda Verde Horizonte</div>
+                                <div class="farm-status">Ativo</div>
+                            </div>
+                            <div class="farm-details">
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div>Província de Nampula</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-expand-alt"></i></div>
+                                    <div>20 hectares</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-seedling"></i></div>
+                                    <div>Milho, Feijão, Mandioca</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-calendar-alt"></i></div>
+                                    <div>Est. 2015</div>
+                                </div>
+                            </div>
+                            <div class="farm-actions">
+                                <button class="btn">Ver Detalhes</button>
+                                <button class="edit-btn">Editar</button>
                             </div>
                         </div>
-                        <div class="chart-body">
-                            <canvas id="sales-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Usuários por Localização</h3>
-                            <div class="chart-actions">
-                                <button class="chart-btn active">Maputo</button>
-                                <button class="chart-btn">Beira</button>
-                                <button class="chart-btn">Nampula</button>
-                                <button class="chart-btn">Outras</button>
-                            </div>
-                        </div>
-                        <div class="chart-body">
-                            <canvas id="users-chart"></canvas>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Recent Activities -->
-                <div class="recent-activities">
-                    <div class="section-header">
-                        <h2>Atividades Recentes</h2>
-                        <a href="#" class="view-all">Ver Tudo <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="activities-list">
-                        <div class="activity-item">
-                            <div class="activity-icon bg-primary">
-                                <i class="fas fa-user-plus"></i>
+                        <div class="farm-card">
+                            <div class="farm-header">
+                                <div class="farm-name">Quinta do Sol</div>
+                                <div class="farm-status">Ativo</div>
                             </div>
-                            <div class="activity-details">
-                                <h4>Novo Utilizador Registado</h4>
-                                <p>Joaquim Chissano registou-se como novo utilizador no sistema.</p>
-                                <span class="activity-time">Há 2 horas</span>
+                            <div class="farm-details">
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div>Província de Gaza</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-expand-alt"></i></div>
+                                    <div>15 hectares</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-seedling"></i></div>
+                                    <div>Tomate, Cebola, Alface</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-calendar-alt"></i></div>
+                                    <div>Est. 2018</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon bg-success">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>Pagamento Recebido</h4>
-                                <p>Pagamento de 15,000 MZN recebido da Loja Pemba.</p>
-                                <span class="activity-time">Há 5 horas</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon bg-warning">
-                                <i class="fas fa-user-shield"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>Permissão Atualizada</h4>
-                                <p>Samora Machel foi promovido para Administrador Regional.</p>
-                                <span class="activity-time">Há 1 dia</span>
+                            <div class="farm-actions">
+                                <button class="btn">Ver Detalhes</button>
+                                <button class="edit-btn">Editar</button>
                             </div>
                         </div>
-                        <div class="activity-item">
-                            <div class="activity-icon bg-danger">
-                                <i class="fas fa-exclamation-triangle"></i>
-                            </div>
-                            <div class="activity-details">
-                                <h4>Alerta de Sistema</h4>
-                                <p>Detectado tentativa de acesso não autorizado em Inhambane.</p>
-                                <span class="activity-time">Há 2 dias</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- User Management -->
-                <div class="user-management">
-                    <div class="section-header">
-                        <h2>Gestão de Usuários</h2>
-                        <div class="section-actions">
-                            <button class="btn-add"><i class="fas fa-plus"></i> Adicionar Usuário</button>
+                        <div class="farm-card">
+                            <div class="farm-header">
+                                <div class="farm-name">Plantação Boa Esperança</div>
+                                <div class="farm-status inactive">Inativo</div>
+                            </div>
+                            <div class="farm-details">
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div>Província de Inhambane</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-expand-alt"></i></div>
+                                    <div>8 hectares</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-seedling"></i></div>
+                                    <div>Arroz</div>
+                                </div>
+                                <div class="farm-detail">
+                                    <div class="detail-icon"><i class="fas fa-calendar-alt"></i></div>
+                                    <div>Est. 2020</div>
+                                </div>
+                            </div>
+                            <div class="farm-actions">
+                                <button class="btn">Ver Detalhes</button>
+                                <button class="edit-btn">Editar</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Função</th>
-                                    <th>Status</th>
-                                    <th>Localização</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="user-info-cell">
-                                            <img src="assets/images/user1.png" alt="User">
-                                            <div class="user-info-text">
-                                                <h4>Filipe Nyusi</h4>
-                                                <p>ID: 001234</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>filipe.nyusi@example.com</td>
-                                    <td>Admin</td>
-                                    <td><span class="status-badge active">Ativo</span></td>
-                                    <td>Maputo</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-info-cell">
-                                            <img src="assets/images/user2.png" alt="User">
-                                            <div class="user-info-text">
-                                                <h4>Luísa Diogo</h4>
-                                                <p>ID: 001235</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>luisa.diogo@example.com</td>
-                                    <td>Gerente</td>
-                                    <td><span class="status-badge active">Ativo</span></td>
-                                    <td>Beira</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-info-cell">
-                                            <img src="assets/images/user3.png" alt="User">
-                                            <div class="user-info-text">
-                                                <h4>Alberto Chipande</h4>
-                                                <p>ID: 001236</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>alberto.chipande@example.com</td>
-                                    <td>Usuário</td>
-                                    <td><span class="status-badge inactive">Inativo</span></td>
-                                    <td>Nampula</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-info-cell">
-                                            <img src="assets/images/user4.png" alt="User">
-                                            <div class="user-info-text">
-                                                <h4>Graça Machel</h4>
-                                                <p>ID: 001237</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>graca.machel@example.com</td>
-                                    <td>Gerente</td>
-                                    <td><span class="status-badge active">Ativo</span></td>
-                                    <td>Maputo</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                                            <button class="btn-more"><i class="fas fa-ellipsis-v"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Activity Tab -->
+                    <div class="tab-content" id="activity">
+                        <h2 class="section-title">Atividades Recentes</h2>
+                        <ul class="activity-list">
+                            <li class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-seedling"></i></div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Nova plantação de tomate iniciada</div>
+                                    <div class="activity-time">Hoje, 10:30</div>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-cloud-rain"></i></div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Sistema de irrigação atualizado</div>
+                                    <div class="activity-time">Ontem, 15:45</div>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-truck"></i></div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Colheita de milho transportada para o mercado</div>
+                                    <div class="activity-time">26/02/2023, 09:15</div>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-user-friends"></i></div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Contratação de 5 novos trabalhadores</div>
+                                    <div class="activity-time">24/02/2023, 14:20</div>
+                                </div>
+                            </li>
+                            <li class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-tractor"></i></div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Manutenção do trator realizada</div>
+                                    <div class="activity-time">20/02/2023, 11:30</div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h2 class="section-title">Produção Anual</h2>
+                        <canvas id="productionChart" width="400" height="200"></canvas>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div class="tab-content" id="settings">
+                        <h2 class="section-title">Configurações da Conta</h2>
+                        <div class="settings-form">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" value="joao.silva@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Nova Senha</label>
+                                <input type="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirmar Nova Senha</label>
+                                <input type="password" id="confirm-password" class="form-control">
+                            </div>
+                            <button class="btn">Salvar Alterações</button>
+                        </div>
+
+                        <h2 class="section-title">Notificações</h2>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Alertas de Clima</h4>
+                                <p>Receba alertas sobre condições climáticas que podem afetar suas plantações</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Atualizações de Mercado</h4>
+                                <p>Receba informações sobre preços e tendências do mercado</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Lembretes de Tarefas</h4>
+                                <p>Receba lembretes sobre tarefas agrícolas programadas</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h4>Newsletter</h4>
+                                <p>Receba nossa newsletter mensal com dicas e novidades</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="assets/images/logo.png" alt="Tuke Tulole Logo">
+                    <p>Transformando a agricultura em Moçambique</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Serviço</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</li>
+                        <li><i class="fas fa-phone"></i> +258 84 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tuketulole.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Tuke Tulole. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="assets/js/charts.js"></script>
-<script src="assets/js/main.js"></script>
-
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
